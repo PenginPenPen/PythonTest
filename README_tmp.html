@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="python%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E3%81%A7%E4%BD%BF%E3%81%86%E5%95%8F%E9%A1%8C%E3%81%A7%E3%81%99">pythonのテストで使う問題です。</h2>
+<h3 id="%E5%95%8F%E9%A1%8C1">問題1</h3>
+<p>変数 x が 10 より大きいかどうかを判定し、大きい場合は<strong>大きい</strong>、そうでない場合は<strong>小さい</strong>と表示してください。<br>
+入力例:</p>
+<pre class="hljs"><code><div>20
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>大きい
+</div></code></pre>
+<h3 id="%E5%95%8F%E9%A1%8C2">問題2</h3>
+<p><strong>1からx</strong>までの数字を順に表示してください。ただし、次のルールに従ってください</p>
+<p>数字が3で割り切れる場合、その数字の代わりに「Fizz」と表示します。
+数字が5で割り切れる場合、その数字の代わりに「Buzz」と表示します。
+数字が3でも5でも割り切れる場合、その数字の代わりに「FizzBuzz」と表示します。</p>
+<p>また50からまで次のルールに変更してください。
+数字が3で割り切れる場合、その数字の代わりに「!Buzz」と表示します。
+数字が5で割り切れる場合、その数字の代わりに「!Fizz」と表示します。
+数字が3でも5でも割り切れる場合、その数字の代わりに「!FizzBuzz」と表示します。<br>
+入力例:</p>
+<pre class="hljs"><code><div>101
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz
+Fizz
+22
+23
+Fizz
+Buzz
+26
+Fizz
+28
+29
+FizzBuzz
+31
+32
+Fizz
+34
+Buzz
+Fizz
+37
+38
+Fizz
+Buzz
+41
+Fizz
+43
+44
+FizzBuzz
+46
+47
+Fizz
+49
+Buzz
+!Buzz
+52
+53
+!Buzz
+!Fizz
+56
+!Buzz
+58
+59
+!FizzBuzz
+61
+62
+!Buzz
+64
+!Fizz
+!Buzz
+67
+68
+!Buzz
+!Fizz
+71
+!Buzz
+73
+74
+!FizzBuzz
+76
+77
+!Buzz
+79
+!Fizz
+!Buzz
+82
+83
+!Buzz
+!Fizz
+86
+!Buzz
+88
+89
+!FizzBuzz
+91
+92
+!Buzz
+94
+!Fizz
+!Buzz
+97
+98
+!Buzz
+!Fizz
+</div></code></pre>
+<h3 id="%E5%95%8F%E9%A1%8C3">問題3</h3>
+<p>あなたはテレビ番組の放送禁止用語を検閲するために雇われました。x個ある放送禁止用語はリストで指定されています。視聴者に適切な放送を届けるために、以下の文中に含まれる禁止用語を「*」に置き換えてください。禁止用語の文字数に応じて、文字ごとに「*」を表示します。<br>
+入力例 xが3の場合:</p>
+<pre class="hljs"><code><div>3
+訪れる人々
+観光客
+感動
+歴史的な重要性を持つ、世界的に有名な建築物が立ち並ぶ都市の中心部には、訪れる人々を魅了するさまざまな文化施設や観光名所が点在しており、それぞれの施設が持つ独自の歴史と魅力によって、数多くの観光客がその地域の豊かな文化遺産を体験し、感動を覚えることができるでしょう。
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>歴史的な重要性を持つ、世界的に有名な建築物が立ち並ぶ都市の中心部には、*****を魅了するさまざまな文化施設や観光名所が点在しており、それぞれの施設が持つ独自の歴史と魅力によって、数多くの***がその地域の豊かな文化遺産を体験し、**を覚えることができるでしょう。
+</div></code></pre>
+<h3 id="%E5%95%8F%E9%A1%8C4">問題4</h3>
+<p><strong>human</strong>というclassを作成し名前<strong>name</strong>と年齢<strong>age</strong>を持たせx人作成してください。また<strong>hello</strong>メソッドを用意し、<strong>name</strong>と<strong>age</strong>を使い自己紹介をさせてください。
+<br>自己紹介は以下のようなフォーマットにしてください</p>
+<pre class="hljs"><code><div>こんにちは私の名前は[name]です。年齢は[age]です。
+</div></code></pre>
+<p>入力例 xが1の場合:</p>
+<pre class="hljs"><code><div>1
+グイド・ヴァン・ロッサム
+68
+</div></code></pre>
+<p>出力結果</p>
+<pre class="hljs"><code><div>こんにちは私の名前はグイド・ヴァン・ロッサムです。年齢は68歳です。
+</div></code></pre>
+<h3 id="%E5%95%8F%E9%A1%8C5">問題5</h3>
+<p><strong>Animal</strong> という名前のクラスを作成してください。このクラスは以下の2つの属性を持ちます:</p>
+<p>name（動物の名前、文字列型）
+age（動物の年齢、整数型）
+クラス内に <strong>describe</strong> という名前のメソッドを定義してください。このメソッドは、動物の名前と年齢を表示します。表示の形式は</p>
+<pre class="hljs"><code><div>「名前: [名前], 年齢: [年齢]」
+</div></code></pre>
+<p>としてください。</p>
+<h3 id="5-1%E5%8B%95%E7%89%A9%E3%81%AE%E4%BD%9C%E6%88%90">5-1動物の作成</h3>
+<p><strong>Animal</strong> クラスを使って、x匹の動物を作成してください。それぞれの動物には異なる名前と年齢を設定します。
+作成した動物を全て <strong>animals</strong> というリストに格納してください。</p>
+<h3 id="5-2%E5%8B%95%E7%89%A9%E3%81%AE%E8%AA%AC%E6%98%8E%E3%81%AE%E5%87%BA%E5%8A%9B">5-2動物の説明の出力</h3>
+<p><strong>animals</strong> リストに格納されている全ての動物について、<strong>describe</strong> メソッドを使ってその説明を表示してください。</p>
+<h3 id="5-3%E5%B9%B4%E9%BD%A2%E3%81%AE%E5%88%A4%E5%AE%9A">5-3年齢の判定</h3>
+<p>動物の年齢を判定する関数 check_age を定義してください。関数内で以下のように処理を行ってください:
+引数として <strong>Animal</strong> クラスのインスタンスを受け取ります。
+もし動物の年齢が7歳以上なら</p>
+<pre class="hljs"><code><div>[名前]は年長です。
+</div></code></pre>
+<p>と表示します。
+それ以外（6歳以下）なら</p>
+<pre class="hljs"><code><div>[名前]は若いです。
+</div></code></pre>
+<p>と表示します。
+入力例 xが2の場合:</p>
+<pre class="hljs"><code><div>2
+猫
+12
+犬
+3
+</div></code></pre>
+<p>出力結果:</p>
+<pre class="hljs"><code><div>名前:猫,年齢12
+名前:犬,年齢3
+猫は年長です
+犬は若いです
+</div></code></pre>
+
+</body>
+</html>
